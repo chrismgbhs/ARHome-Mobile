@@ -50,7 +50,7 @@ SCREENS['splash'] = {
         </div>
         <div>
           <div style="font-family:'Fraunces',serif; font-size:26px; font-weight:600; color:#3a2c18;">AR Home</div>
-          <div style="font-size:12.5px; letter-spacing:0.18em; text-transform:uppercase; color:#6b5736; margin-top:2px;">Design it before you buy it</div>
+          <div style="font-size:12.5px; letter-spacing:0.18em; text-transform:uppercase; color:#6b5736; margin-top:2px;">Where vision meets reality</div>
         </div>
         <div class="hint-pill" style="margin-top:30px; background:rgba(58,44,24,0.85);">Tap to begin →</div>
       </div>

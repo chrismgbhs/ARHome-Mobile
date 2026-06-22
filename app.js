@@ -91,6 +91,10 @@ function startFlow(flow){
 }
 
 // ---- Boot ----
+// Override statusRow() from screens-customer.js — on mobile we let the
+// real OS status bar show through instead of rendering a fake one.
+function statusRow(){ return ''; }
+
 document.addEventListener('DOMContentLoaded', () => {
   renderAllScreens();
   goTo('splash');

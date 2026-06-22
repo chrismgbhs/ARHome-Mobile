@@ -112,7 +112,7 @@ SCREENS['ar-scan-launch'] = {
         <div class="muted small" style="margin-top:4px;">Select furniture from different stores to bring into your room</div>
       </div>
       <div class="product-grid">
-        ${arPickCard('Room Sofa', IMG.sofa1, true)}
+        ${arPickCard('Room Sofa', IMG.sofa_ar_cutout, true)}
         ${arPickCard('Curve Armchair', IMG.chair1, false)}
         ${arPickCard('Oak Coffee Table', IMG.table1, false)}
         ${arPickCard('Aalto Floor Lamp', IMG.lamp1, false)}
@@ -125,8 +125,12 @@ SCREENS['ar-scan-launch'] = {
   }
 };
 function arPickCard(name,img,selected){
+  const isPng = img && img.endsWith('.png');
+  const imgHtml = isPng
+    ? `<div class="img" style="background:var(--cream-deep); display:flex; align-items:center; justify-content:center; padding:10px;"><img src="${img}" style="width:100%; max-height:90px; object-fit:contain;"></div>`
+    : `<div class="img" style="background-image:url('${img}')"></div>`;
   return `<div class="product-card" style="${selected?'border-color:var(--gold); box-shadow:0 0 0 2px var(--gold-soft);':''}" onclick="goTo('ar-dimension-intro')">
-    <div class="img" style="background-image:url('${img}')"></div>
+    ${imgHtml}
     <div class="pinfo"><div class="pname">${name}</div>${selected?'<div class="badge badge-gold" style="margin-top:4px;">Selected</div>':''}</div>
   </div>`;
 }
@@ -147,8 +151,8 @@ SCREENS['ar-dimension-intro'] = {
         <div class="card grow" style="padding:12px; text-align:center; border-color:var(--green);">
           <div style="color:var(--green); margin-bottom:4px;">${ICON.check}</div>
           <div class="small" style="font-weight:800;">Selected Furniture</div>
-          <img src="${IMG.chair1}" style="width:60px;height:46px;object-fit:cover;border-radius:8px;margin:6px auto 4px;">
-          <div class="muted" style="font-size:10.5px;">From Urban Concepts Store</div>
+          <img src="${IMG.sofa_ar_cutout}" style="width:60px;height:46px;object-fit:cover;border-radius:8px;margin:6px auto 4px;">
+          <div class="muted" style="font-size:10.5px;">From Woodley Furniture Shop</div>
         </div>
         <div class="card grow" style="padding:12px; text-align:center; border-color:var(--gold);">
           <div style="color:var(--tan-deep); margin-bottom:4px;">${ICON.layers}</div>
@@ -592,8 +596,7 @@ SCREENS['ar-capture-result'] = {
   note:'Captured snapshot: background is now static/fixed while the furniture stays in motion (still adjustable) until you confirm. From here, add to cart or share to the community.',
   render(){
     return `
-    <div style="position:relative; height:100%;">
-      <img src="${IMG.floor_room}" style="width:100%;height:100%;object-fit:cover; position:absolute; inset:0;">
+    <div style="position:relative; height:100%; background:#EDE7DA url('${IMG.floor_room}') center/cover no-repeat;">
       <div class="ar-object-photo" style="bottom:160px; width:230px;"><img src="${IMG.sofa_ar_cutout}" alt="Room Sofa"></div>
       <div style="position:relative; z-index:2;">${statusRow()}</div>
       <div style="position:relative; z-index:2;" class="header-row">
